@@ -43,7 +43,9 @@ public class UserServiceImpl implements UserService {
         } catch (WebClientResponseException e) {
             switch (e.getRawStatusCode()) {
                 case 401:
+                case 404:
                     throw new UnauthorizedException("User is not Authorized");
+
                 default:
                     throw new InternalServerException(e.getMessage());
             }

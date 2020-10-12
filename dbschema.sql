@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS group_chat
 
 CREATE TABLE IF NOT EXISTS group_message
 (
-    id            UUID      DEFAULT uuid_generate_v4(),
+    id            UUID DEFAULT uuid_generate_v4(),
     author_id     UUID,
     chat_id       UUID NOT NULL,
     contents      TEXT NOT NULL,

@@ -11,7 +11,6 @@ import com.and1ss.group_chat_service.services.model.GroupMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -59,9 +58,11 @@ public class GroupChatController {
             @RequestBody GroupChatCreationDTO chatCreationDTO,
             @RequestHeader("Authorization") String token
     ) {
+        System.out.println(token);
         AccountInfo authorizedUser = authorizeUserByBearerToken(token);
         List<UUID> participantsIds = chatCreationDTO.getParticipants();
 
+        System.out.println(authorizedUser.toString());
         List<AccountInfo> participants =
                 userService.findUsersByListOfIds(participantsIds);
 
