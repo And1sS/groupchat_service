@@ -1,6 +1,6 @@
 package com.and1ss.group_chat_service.services.impl;
 
-import com.and1ss.group_chat_service.api.connections.UserServiceConnection;
+import com.and1ss.group_chat_service.api.rest.UserServiceConnection;
 import com.and1ss.group_chat_service.api.dto.AccountInfoRetrievalDTO;
 import com.and1ss.group_chat_service.exceptions.BadRequestException;
 import com.and1ss.group_chat_service.exceptions.InternalServerException;
@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;

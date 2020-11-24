@@ -1,0 +1,51 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.and1ss.user_service;
+
+message GrpcAccessTokenIncomingDTO {
+  string token = 1;
+}
+
+message GrpcAccessTokenOutgoingDTO {
+  string token = 1;
+  string created_at = 2;
+}
+
+message GrpcAccountInfoRetrievalDTO {
+  string id = 1;
+  string name = 2;
+  string surname = 3;
+}
+
+message GrpcLoginCredentialsDTO {
+  string login = 1;
+  string password = 2;
+}
+
+message GrpcRegisterInfoDTO {
+  string name = 1;
+  string surname = 2;
+  string login = 3;
+  string password = 4;
+}
+
+message GrpcUsersDTO {
+  repeated GrpcAccountInfoRetrievalDTO users = 2;
+}
+
+message GrpcUserIdDTO {
+  string userId = 1;
+}
+
+message GrpcUsersIdsDTO {
+  repeated string usersIds = 1;
+}
+
+service GrpcAuthenticationService {
+  rpc identifyByToken(GrpcAccessTokenIncomingDTO) returns (GrpcAccountInfoRetrievalDTO);
+  rpc login(GrpcLoginCredentialsDTO) returns (GrpcAccessTokenOutgoingDTO);
+  rpc register(GrpcRegisterInfoDTO) returns (GrpcAccountInfoRetrievalDTO);
+  rpc identifyUserById(GrpcUserIdDTO) returns (GrpcAccountInfoRetrievalDTO);
+  rpc identifyUsersByIds(GrpcUsersIdsDTO) returns (GrpcUsersDTO);
+}

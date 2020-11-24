@@ -1,4 +1,4 @@
-package com.and1ss.group_chat_service.api;
+package com.and1ss.group_chat_service.api.rest;
 
 import com.and1ss.group_chat_service.api.dto.*;
 import com.and1ss.group_chat_service.exceptions.BadRequestException;
@@ -58,7 +58,6 @@ public class GroupChatController {
             @RequestBody GroupChatCreationDTO chatCreationDTO,
             @RequestHeader("Authorization") String token
     ) {
-        System.out.println(token);
         AccountInfo authorizedUser = authorizeUserByBearerToken(token);
         List<UUID> participantsIds = chatCreationDTO.getParticipants();
 

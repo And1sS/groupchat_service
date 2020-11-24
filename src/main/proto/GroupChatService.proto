@@ -1,0 +1,66 @@
+syntax = "proto3";
+option java_multiple_files = true;
+
+package com.and1ss.group_chat_service;
+
+message GrpcAccessTokenIncomingDTO {
+  string token = 1;
+}
+
+message GrpcChatRetrievalDTO {
+  string token = 1;
+  string chatId = 2;
+}
+
+message GrpcGroupChatCreationDTO {
+  string token = 1;
+  string title = 2;
+  string about = 3;
+  repeated string participants = 4;
+}
+
+message GrpcGroupChatDTO {
+  string id = 1;
+  string title = 2;
+  string about = 3;
+  string creatorId = 4;
+  repeated string participants = 5;
+}
+
+message GrpcGroupMessageCreationDTO {
+  string contents = 1;
+  string token = 2;
+  string chatId = 3;
+}
+
+message GrpcGroupMessageRetrievalDTO {
+  string id = 1;
+  string authorId = 2;
+  string chatId = 3;
+  string contents = 4;
+  string createdAt = 5;
+}
+
+message GrpcGroupMessagesRetrievalDTO {
+  repeated GrpcGroupMessageRetrievalDTO messages = 1;
+}
+
+message GrpcGroupChatsDTO {
+  repeated GrpcGroupChatDTO chats = 1;
+}
+
+message GrpcUserIdDTO {
+  string userId = 1;
+}
+
+message GrpcUsersIdsDTO {
+  repeated string usersIds = 1;
+}
+
+service GrpcGroupChatService {
+  rpc getAllChats(GrpcAccessTokenIncomingDTO) returns (GrpcGroupChatsDTO);
+  rpc getChatById(GrpcChatRetrievalDTO) returns (GrpcGroupChatDTO);
+  rpc createGroupChat(GrpcGroupChatCreationDTO) returns (GrpcGroupChatDTO);
+  rpc getAllMessageForChat(GrpcChatRetrievalDTO) returns (GrpcGroupMessagesRetrievalDTO);
+  rpc createMessage(GrpcGroupMessageCreationDTO) returns (GrpcGroupMessageRetrievalDTO);
+}

@@ -1,4 +1,4 @@
-package com.and1ss.group_chat_service.api.connections;
+package com.and1ss.group_chat_service.api.rest;
 
 import com.and1ss.group_chat_service.api.dto.AccountInfoRetrievalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,7 @@ public class UserServiceConnection {
     public UserServiceConnection(Environment env) {
         userServiceBaseAddr = env.getProperty("user_service_base_addr");
 
+        assert userServiceBaseAddr != null;
         this.webClient = WebClient.builder()
                 .baseUrl(userServiceBaseAddr)
                 .defaultHeader(

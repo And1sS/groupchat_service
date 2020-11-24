@@ -1,7 +1,18 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.14'
+    }
+}
+
 plugins {
-    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'org.springframework.boot' version '2.4.0'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'com.google.protobuf' version '0.8.13'
     id 'java'
+    id 'idea'
 }
 
 group = 'com.and1ss'
@@ -23,9 +34,14 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-actuator"
     implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.projectreactor:reactor-spring:1.0.1.RELEASE'
 
     implementation "org.postgresql:postgresql:9.4-1206-jdbc42"
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'io.github.lognet:grpc-spring-boot-starter:4.2.2'
+    implementation 'io.grpc:grpc-netty:1.16.1'
+    implementation 'io.grpc:grpc-protobuf:1.16.1'
+    implementation 'io.grpc:grpc-stub:1.16.1'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -33,6 +49,33 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'build/generated/source/proto/main/grpc'
+            srcDirs 'build/generated/source/proto/main/java'
+        }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.7.1'
+    }
+
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.25.0'
+        }
+    }
+
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
     }
 }
 
