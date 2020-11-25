@@ -21,9 +21,9 @@ public class GrpcUserServiceConnection {
     private final ManagedChannel channel;
 
     @Autowired
-    public GrpcUserServiceConnection() {
+    public GrpcUserServiceConnection(Environment env) {
         channel = ManagedChannelBuilder
-                .forAddress("localhost", 6566)
+                .forAddress(env.getProperty("grpc_auth_url"), Integer.valueOf(env.getProperty("grpc_auth_port")))
                 .usePlaintext()
                 .build();
     }
