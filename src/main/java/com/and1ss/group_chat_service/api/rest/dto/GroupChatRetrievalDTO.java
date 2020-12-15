@@ -1,4 +1,4 @@
-package com.and1ss.group_chat_service.api.dto;
+package com.and1ss.group_chat_service.api.rest.dto;
 
 import com.and1ss.group_chat_service.services.model.AccountInfo;
 import com.and1ss.group_chat_service.services.model.GroupChat;

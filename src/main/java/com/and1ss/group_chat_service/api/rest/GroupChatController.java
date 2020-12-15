@@ -1,6 +1,6 @@
 package com.and1ss.group_chat_service.api.rest;
 
-import com.and1ss.group_chat_service.api.dto.*;
+import com.and1ss.group_chat_service.api.rest.dto.*;
 import com.and1ss.group_chat_service.exceptions.BadRequestException;
 import com.and1ss.group_chat_service.services.GroupChatMessageService;
 import com.and1ss.group_chat_service.services.GroupChatService;

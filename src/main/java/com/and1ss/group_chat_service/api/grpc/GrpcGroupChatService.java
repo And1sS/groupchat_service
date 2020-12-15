@@ -1,7 +1,7 @@
 package com.and1ss.group_chat_service.api.grpc;
 
 import com.and1ss.group_chat_service.*;
-import com.and1ss.group_chat_service.api.dto.GroupChatRetrievalDTO;
+import com.and1ss.group_chat_service.api.rest.dto.GroupChatRetrievalDTO;
 import com.and1ss.group_chat_service.exceptions.BadRequestException;
 import com.and1ss.group_chat_service.services.GroupChatMessageService;
 import com.and1ss.group_chat_service.services.GroupChatService;
@@ -12,7 +12,6 @@ import com.google.protobuf.ByteString;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;

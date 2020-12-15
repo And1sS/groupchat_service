@@ -1,7 +1,7 @@
 package com.and1ss.group_chat_service.services.impl;
 
 import com.and1ss.group_chat_service.api.rest.UserServiceConnection;
-import com.and1ss.group_chat_service.api.dto.AccountInfoRetrievalDTO;
+import com.and1ss.group_chat_service.api.rest.dto.AccountInfoRetrievalDTO;
 import com.and1ss.group_chat_service.exceptions.BadRequestException;
 import com.and1ss.group_chat_service.exceptions.InternalServerException;
 import com.and1ss.group_chat_service.exceptions.UnauthorizedException;

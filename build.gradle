@@ -43,6 +43,7 @@ dependencies {
     implementation 'io.grpc:grpc-protobuf:1.16.1'
     implementation 'io.grpc:grpc-stub:1.16.1'
 
+    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'

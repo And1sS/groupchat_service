@@ -1,6 +1,6 @@
 package com.and1ss.group_chat_service.api.grpc;
 
-import com.and1ss.group_chat_service.api.dto.AccountInfoRetrievalDTO;
+import com.and1ss.group_chat_service.api.rest.dto.AccountInfoRetrievalDTO;
 import com.and1ss.user_service.GrpcAccessTokenIncomingDTO;
 import com.and1ss.user_service.GrpcAuthenticationServiceGrpc;
 import com.and1ss.user_service.GrpcUserIdDTO;
@@ -23,7 +23,7 @@ public class GrpcUserServiceConnection {
     @Autowired
     public GrpcUserServiceConnection(Environment env) {
         channel = ManagedChannelBuilder
-                .forAddress(env.getProperty("grpc_auth_url"), Integer.valueOf(env.getProperty("grpc_auth_port")))
+                .forAddress("localhost", 6566)
                 .usePlaintext()
                 .build();
     }

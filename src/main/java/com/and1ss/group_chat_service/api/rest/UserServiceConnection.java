@@ -1,6 +1,6 @@
 package com.and1ss.group_chat_service.api.rest;
 
-import com.and1ss.group_chat_service.api.dto.AccountInfoRetrievalDTO;
+import com.and1ss.group_chat_service.api.rest.dto.AccountInfoRetrievalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
